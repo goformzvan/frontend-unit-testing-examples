@@ -1,10 +1,10 @@
 import './App.css';
-import { useMemo, useReducer } from 'react';
+import { useReducer } from 'react';
 import CountButton from './components/Button/CountButton';
 import countButtonReducer, {
   COUNT_BUTTON_INITIAL_STATE
 } from './reducers/countButtonReducer';
-import { getCountStatus } from './helpers/helper';
+import { getCountStatusThrows } from './helpers/helper';
 import { ActionTypes, increment } from './actions/countButtonActions';
 
 function App() {
@@ -13,7 +13,19 @@ function App() {
     COUNT_BUTTON_INITIAL_STATE
   );
 
-  const statusText = useMemo(() => getCountStatus(state.count), [state.count]);
+  const getStatusText = (count: number) => {
+    try {
+      const statusText = getCountStatusThrows(count);
+
+      return statusText;
+    } catch (error) {
+      if (error instanceof Error) {
+        return error.message;
+      }
+
+      return 'An error occurred';
+    }
+  };
 
   const handleCountClick = (currentCount: number) => {
     increment(currentCount, dispatch);
@@ -26,7 +38,7 @@ function App() {
   return (
     <div className="app">
       <div className="count-status">
-        <p>{statusText}</p>
+        <p>{getStatusText(state.count)}</p>
       </div>
       <div className="actions">
         <CountButton count={state.count} onClick={handleCountClick} />
