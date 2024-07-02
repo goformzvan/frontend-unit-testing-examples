@@ -1,10 +1,10 @@
 import './MyButton.css';
 
 export type ButtonProps = {
-  count: number;
-  onClick: (currentCount: number) => void;
+  children: string;
+  onClick: VoidFunction;
 };
 
-export default function CountButton(props: ButtonProps) {
-  return <button onClick={() => props.onClick(props.count)}>Count</button>;
+export default function MyButton(props: ButtonProps) {
+  return <button onClick={() => props.onClick()}>{props.children}</button>;
 }

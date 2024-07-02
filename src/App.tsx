@@ -2,13 +2,13 @@ import './App.css';
 
 import { useReducer } from 'react';
 import { ActionTypes, increment } from './actions/countActions';
-import CountButton from './components/Button/MyButton';
+import MyButton from './components/Button/MyButton';
 import { getCountStatusThrows } from './helpers/helper';
 import countReducer, {
   COUNT_BUTTON_INITIAL_STATE
 } from './reducers/countReducer';
 
-function App() {
+export default function App() {
   const [state, dispatch] = useReducer(
     countReducer,
     COUNT_BUTTON_INITIAL_STATE
@@ -42,13 +42,11 @@ function App() {
         <p>{getStatusText(state.count)}</p>
       </div>
       <div className="actions">
-        <CountButton count={state.count} onClick={handleCountClick} />
+        <MyButton onClick={() => handleCountClick(state.count)}>Count</MyButton>
         <br />
         <br />
-        <button onClick={handleResetClick}>Reset</button>
+        <MyButton onClick={handleResetClick}>Reset</MyButton>
       </div>
     </div>
   );
 }
-
-export default App;
