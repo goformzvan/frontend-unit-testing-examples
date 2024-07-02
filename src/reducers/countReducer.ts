@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import { ActionTypes, CountButtonAction } from '../actions/countButtonActions';
+import { ActionTypes, CountButtonAction } from '../actions/countActions';
 
 export type CountButtonState = {
   count: number;
@@ -9,7 +9,7 @@ export const COUNT_BUTTON_INITIAL_STATE: CountButtonState = {
   count: 0
 };
 
-export default function countButtonReducer(
+export default function countReducer(
   state = COUNT_BUTTON_INITIAL_STATE,
   action: CountButtonAction
 ): CountButtonState {

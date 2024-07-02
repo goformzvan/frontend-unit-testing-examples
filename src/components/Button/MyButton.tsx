@@ -1,3 +1,5 @@
+import './MyButton.css';
+
 export type ButtonProps = {
   count: number;
   onClick: (currentCount: number) => void;

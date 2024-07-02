@@ -1,15 +1,16 @@
 import './App.css';
+
 import { useReducer } from 'react';
-import CountButton from './components/Button/CountButton';
-import countButtonReducer, {
-  COUNT_BUTTON_INITIAL_STATE
-} from './reducers/countButtonReducer';
+import { ActionTypes, increment } from './actions/countActions';
+import CountButton from './components/Button/MyButton';
 import { getCountStatusThrows } from './helpers/helper';
-import { ActionTypes, increment } from './actions/countButtonActions';
+import countReducer, {
+  COUNT_BUTTON_INITIAL_STATE
+} from './reducers/countReducer';
 
 function App() {
   const [state, dispatch] = useReducer(
-    countButtonReducer,
+    countReducer,
     COUNT_BUTTON_INITIAL_STATE
   );
 
