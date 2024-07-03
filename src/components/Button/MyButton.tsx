@@ -6,5 +6,9 @@ export type ButtonProps = {
 };
 
 export default function MyButton(props: ButtonProps) {
-  return <button onClick={() => props.onClick()}>{props.children}</button>;
+  return (
+    <button className="my-button" onClick={() => props.onClick()}>
+      {props.children}
+    </button>
+  );
 }
