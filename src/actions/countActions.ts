@@ -1,4 +1,3 @@
-// Define action type
 export type CountButtonAction = {
   type: ActionTypes;
   payload?: number;
@@ -10,7 +9,7 @@ export enum ActionTypes {
   SKIP = 'SKIP'
 }
 
-// Define action creators
+// thunks
 export function increment(
   count: number,
   dispatch: React.Dispatch<CountButtonAction>
